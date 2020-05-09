@@ -3,3 +3,7 @@ div.logo {
     background: rgba(255, 255, 255, 0.2);
     margin: 16px;
 }
+
+.transition {
+    transition: margin .2s;
+}
