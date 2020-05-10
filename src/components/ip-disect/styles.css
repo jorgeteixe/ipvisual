@@ -1,63 +1,37 @@
-.input-ip {
-    text-align: center;
-    padding: 20px;
-}
-
-.input-ip > * {
-    margin: 0 2px;
-}
-
-.ip-description {
-    margin: 20px 50px;
+.ip-info {
     display: flex;
-    justify-content: center;
+    margin: 20px 10px 10px 10px;
 }
 
-.ip-description-card {
-    min-width: 150px;
-    padding: 0 8px 0 0;
-    margin: 0 20px;
-}
-
-.binary-display {
-    display: flex;
-    padding: 0 10px;
-}
-
-.binary-display > div {
-    display: flex;
+.ip-info > *:first-of-type {
     width: 25%;
-    padding: 0 10px;
+    margin-right: 5px;
 }
 
-.binary-display > div > div {
-    border: 1px solid #b8b8b8;
-    width: 15%;
-    margin: 3px;
-    padding-bottom: 11%;
-    border-radius: 3px;
-    cursor: pointer;
+
+.ip-info > *:last-of-type {
+    width: 75%;
+    margin-left: 5px;
 }
 
-.binary-zero {
-    background: white;
+.ip-info > div > div.ant-card-body {
+    padding: 0;
 }
 
-.binary-one {
-    background: #686868;
+.ip-class {
+    text-align: center;
+    margin-top: 5px;
 }
 
-.reset-cursor {
-    cursor: default !important;
+.ip-class > div {
+    display: flex;
 }
 
-.ip-label {
-    text-transform: uppercase;
+.ip-class > div > div {
+    width: 50%;
+}
+
+.ip-class > div > div > div {
     font-weight: bold;
-    color: #4b4b4b;
-    margin-left: 30px;
-}
-
-.separate-top {
-    margin-top: 30px
+    font-size: larger;
 }

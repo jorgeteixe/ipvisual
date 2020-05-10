@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Layout, Menu } from 'antd'
-import { AppstoreOutlined, BuildOutlined, ContainerOutlined, HomeOutlined, MailOutlined } from '@ant-design/icons'
+import { BuildOutlined, HomeOutlined } from '@ant-design/icons'
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom'
 import './styles.css'
+import '../../globals/styles.css'
 import IPDisect from '../ip-disect/IPDisect'
-
-const { SubMenu } = Menu
+import Homepage from '../homepage/homepage'
 
 const { Sider, Content } = Layout
 
@@ -40,7 +40,7 @@ function App() {
                                onClick={() => navigate('/ipdisect')}>
                         IP Básico
                     </Menu.Item>
-                    <Menu.Item key="3" icon={<ContainerOutlined/>}>
+                    {/*<Menu.Item key="3" icon={<ContainerOutlined/>}>
                         Option 3
                     </Menu.Item>
                     <SubMenu key="sub1" icon={<MailOutlined/>} title="Navigation One">
@@ -56,13 +56,15 @@ function App() {
                             <Menu.Item key="11">Option 11</Menu.Item>
                             <Menu.Item key="12">Option 12</Menu.Item>
                         </SubMenu>
-                    </SubMenu>
+                    </SubMenu>*/}
                 </Menu>
             </Sider>
             <Layout style={collapsed ? { marginLeft: 80 } : { marginLeft: 200 }} className="transition">
                 <Content>
                     <Switch>
-                        <Route exact path="/">Principal</Route>
+                        <Route exact path="/">
+                            <Homepage/>
+                        </Route>
                         <Route exact path="/ipdisect">
                             <IPDisect/>
                         </Route>

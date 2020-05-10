@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react'
-import { Button, PageHeader } from 'antd'
+import { Button, Card, Descriptions, PageHeader, Typography, Tag } from 'antd'
 import { BinaryWithLabel, InputIP } from '../reusable'
 import './styles.css'
+import { convertArrayToString, infoClassIp, isPrivate, isReserved, toBinary, toHex } from '../../utils/iputils'
+
+const { Paragraph } = Typography
 
 const BTN_RESET = 1
 const BTN_RANDOM = 2
@@ -55,6 +58,7 @@ class IPDisect extends Component {
                 <IPDisectTitle btnHandlers={this.titleHandlers}/>
                 <InputIP changeHandler={this.changeHandler} ip={this.state.ip}/>
                 <BinaryWithLabel label="Dirección IP" ip={this.state.ip} changeHandler={this.changeHandler}/>
+                <IPInfo ip={this.state.ip}/>
             </Fragment>
         )
     }
@@ -65,7 +69,7 @@ function IPDisectTitle(props) {
         <PageHeader
             ghost={false}
             title="IP Básico"
-            subTitle="Dada una dirección IP obtienes toda su información de forma visual."
+            subTitle="Dada una dirección IP obtienes su información."
             extra={[
                 <Button key="3"
                         onClick={() => props.btnHandlers(BTN_NAVIGATE)}>Navegar a la IP</Button>,
@@ -78,5 +82,45 @@ function IPDisectTitle(props) {
     )
 }
 
+function IPInfo(props) {
+
+    const { ipClass, start, range, defaultMask } = infoClassIp(props.ip)
+
+    return (
+        <div className="ip-info">
+            <Card title="Clase">
+                <div className="ip-class">
+                    <div>
+                        <div>Clase<div>{ipClass}</div></div>
+                        <div>Empieza por<div>{start}</div></div>
+                    </div>
+                    <div>
+                        <div>Rango<div>{range}</div></div>
+                        <div>Máscara<div>{defaultMask}</div></div>
+                    </div>
+                </div>
+            </Card>
+            <Card title="Otra información">
+                <Descriptions bordered size="large">
+                    <Descriptions.Item label="Privada">
+                        {isPrivate(props.ip) ? <Tag color="green">Si</Tag> : <Tag color="red">No</Tag>}
+                    </Descriptions.Item>
+                    <Descriptions.Item label="Reservada">
+                        {isReserved(props.ip) ? <Tag color="green">Si</Tag> : <Tag color="red">No</Tag>}
+                    </Descriptions.Item>
+                    <Descriptions.Item label="Binario">
+                        <Paragraph className="description-to-copy" copyable>{toBinary(props.ip)}</Paragraph>
+                    </Descriptions.Item>
+                    <Descriptions.Item label="Decimal">
+                        <Paragraph className="description-to-copy" copyable>{convertArrayToString(props.ip)}</Paragraph>
+                    </Descriptions.Item>
+                    <Descriptions.Item label="Hexadecimal">
+                        <Paragraph className="description-to-copy" copyable>{toHex(props.ip)}</Paragraph>
+                    </Descriptions.Item>
+                </Descriptions>
+            </Card>
+        </div>
+    )
+}
 
 export default IPDisect

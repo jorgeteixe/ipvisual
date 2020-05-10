@@ -1,0 +1,11 @@
+.separate-top {
+    margin-top: 30px
+}
+
+.reset-cursor {
+    cursor: default !important;
+}
+
+.description-to-copy {
+    margin-bottom: 0 !important;
+}

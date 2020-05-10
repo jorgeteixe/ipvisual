@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { InputNumber } from 'antd'
 
+import './styles.css'
+
 export class InputIP extends Component {
     constructor(props) {
         super(props)
