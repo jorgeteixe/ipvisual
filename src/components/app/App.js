@@ -6,6 +6,7 @@ import './styles.css'
 import '../../globals/styles.css'
 import IPDisect from '../ip-disect/IPDisect'
 import Homepage from '../homepage/homepage'
+import ClusterOutlined from '@ant-design/icons/lib/icons/ClusterOutlined'
 
 const { Sider, Content } = Layout
 
@@ -40,10 +41,10 @@ function App() {
                                onClick={() => navigate('/ipdisect')}>
                         IP Básico
                     </Menu.Item>
-                    {/*<Menu.Item key="3" icon={<ContainerOutlined/>}>
-                        Option 3
+                    <Menu.Item key="3" icon={<ClusterOutlined />}>
+                        Subredes
                     </Menu.Item>
-                    <SubMenu key="sub1" icon={<MailOutlined/>} title="Navigation One">
+                    {/*<SubMenu key="sub1" icon={<MailOutlined/>} title="Navigation One">
                         <Menu.Item key="5">Option 5</Menu.Item>
                         <Menu.Item key="6">Option 6</Menu.Item>
                         <Menu.Item key="7">Option 7</Menu.Item>
